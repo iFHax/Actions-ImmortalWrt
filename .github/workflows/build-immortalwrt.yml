@@ -124,8 +124,8 @@ jobs:
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P2_SH
         mkdir -p package/emortal/default-settings/files
-        curl -fsSL https://raw.githubusercontent.com/iFHax/Actions-ImmortalWrt/refs/heads/main/99-default-settings -o package/emortal/default-settings/files/99-default-settings
-        # cat package/emortal/default-settings/files/99-default-settings
+        cp 99-default-settings openwrt/package/emortal/default-settings/files/99-default-settings
+        cat package/emortal/default-settings/files/99-default-settings
 
     - name: Set variables
       run: |
