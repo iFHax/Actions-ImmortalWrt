@@ -101,7 +101,7 @@ jobs:
         ccache: 'true'
         prefix: ${{ github.workspace }}/openwrt
         clean: ${{ inputs.nocache }}
-        mixkey: 'x86-64'
+        mixkey: 'qualcommax-ipq807x-arcadyan_aw1000'
 
     - name: Load custom feeds
       run: |
