@@ -36,7 +36,7 @@ env:
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
   UPLOAD_RELEASE: true
-  TZ: UTC
+  TZ: Asia/Kuala_Lumpur
 
 jobs:
   build:
