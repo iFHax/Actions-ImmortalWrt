@@ -21,8 +21,8 @@ sed -i 's/256/4096/g' target/linux/x86/image/Makefile
 
 # Change Xray version to 1.5
 # Navigate to the xray-core package directory and modify the version
-sed -i 's/PKG_VERSION:=v1.4.0/PKG_VERSION:=v1.5.0/' feeds/packages/net/xray-core/Makefile
-
+sed -i 's/PKG_VERSION:=v1.4.0/PKG_VERSION:=v1.8.24/' feeds/packages/net/xray-core/Makefile
+# Xray-core v1.8.24
 # You can also manually download and set a specific version for Xray here
 # In case you're fetching the release via GitHub or custom sources, you can add additional steps if required
 # Example of downloading the specific version if required
