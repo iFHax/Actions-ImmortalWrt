@@ -123,7 +123,9 @@ jobs:
         chmod +x $DIY_P2_SH
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P2_SH
-        cat package/emortal/default-settings/files/99-default-settings
+        mkdir -p package/emortal/default-settings/files
+        curl -fsSL https://raw.githubusercontent.com/iFHax/Actions-ImmortalWrt/refs/heads/main/99-default-settings -o package/emortal/default-settings/files/99-default-settings
+        # cat package/emortal/default-settings/files/99-default-settings
 
     - name: Set variables
       run: |
