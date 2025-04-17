@@ -3,7 +3,7 @@ uci -q get system.@imm_init[0] > "/dev/null" || uci -q add system imm_init > "/d
 
 if ! uci -q get system.@imm_init[0].lang > "/dev/null"; then
 	uci -q batch <<-EOF
-		set luci.main.lang="auto"
+		set luci.main.lang="en"
 		commit luci
 
 		set system.@imm_init[0].lang="1"
@@ -45,16 +45,20 @@ uci set network.lan.dns='8.8.8.8 8.8.4.4'
 uci set network.lan.peerdns='0'
 uci commit network
 
-cat << "EOF" > /etc/banner
-  ___  ____  ____  ____  ____ 
- / __)(  _ \(  _ \( ___)(  _ \
-( (__  )   / )___/ )__)  )   /
- \___)(_)\_)(__)  (____)(_)\_)
+opkg remove luci-i18n-base-zh-cn 2>/dev/null
+opkg list-installed | grep -E 'luci-i18n-.*-zh-cn' | cut -f1 -d' ' | xargs -r opkg remove
 
- Welcome to My Custom OpenWrt Build!
- WiFi: DOTYCAT (Open Network)
- Timezone: Asia/Kuala_Lumpur
- LAN IP: 192.168.1.1
+rm -f /etc/banner
+cat << "EOF" > /etc/banner
+ (        )            )                            )    *     
+ )\ )  ( /(   *   ) ( /(   (    (      *   )  (  ( /(  (  `    
+(()/(  )\())` )  /( )\())  )\   )\   ` )  /(  )\ )\()) )\))(   
+ /(_))((_)\  ( )(_)|(_)\ (((_|(((_)(  ( )(_)|((_|(_)\ ((_)()\  
+(_))_   ((_)(_(_())_ ((_))\___)\ _ )\(_(_()))\___ ((_)(_()((_) 
+ |   \ / _ \|_   _\ \ / ((/ __(_)_\(_)_   _((/ __/ _ \|  \/  | 
+ | |) | (_) | | |  \ V / | (__ / _ \   | |_ | (_| (_) | |\/| | 
+ |___/ \___/  |_|   |_|   \___/_/ \_\  |_(_) \___\___/|_|  |_| 
+                                                               
 EOF
 
 exit 0
